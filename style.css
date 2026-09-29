@@ -1,0 +1,115 @@
+/* remove the default space around the page */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+/* the container is the GRID for the whole page */
+.container {
+  display: grid;
+
+  /* 2 columns: sidebar is 200px, main takes the rest (1fr) */
+  grid-template-columns: 200px 1fr;
+
+  /* 3 rows: header 70px, middle takes the rest, footer 50px */
+  grid-template-rows: 70px 1fr 50px;
+
+  /* we give each part of the page a name and place it */
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+
+  /* make the page at least as tall as the screen */
+  min-height: 100vh;
+}
+
+/* grid-area connects each section to its name above */
+.header {
+  grid-area: header;
+  background-color: #4a5cff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #222;
+  padding: 20px;
+}
+
+/* display: block puts each link on its own line */
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+/* change color when the mouse is on a link */
+.sidebar a:hover {
+  background-color: #4a5cff;
+}
+
+.main {
+  grid-area: main;
+  padding: 20px;
+}
+
+/* the cards also use a grid: 4 equal columns */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #222;
+  color: white;
+  text-align: center;
+}
+
+/* RESPONSIVE: when the screen is 768px or smaller */
+@media (max-width: 768px) {
+  .container {
+    /* only 1 column now */
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px auto 1fr 50px;
+
+    /* everything stacks on top of each other */
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer";
+  }
+
+  /* cards go from 4 columns to 2 */
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* on phones: 1 card per row */
+@media (max-width: 480px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
