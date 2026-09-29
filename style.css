@@ -28,7 +28,7 @@ body {
 /* grid-area connects each section to its name above */
 .header {
   grid-area: header;
-  background-color: #4a5cff;
+  background-color: #2cdeb2;
   color: white;
   display: flex;
   justify-content: space-between;
